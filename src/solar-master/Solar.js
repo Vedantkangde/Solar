@@ -2,10 +2,12 @@
 import * as THREE from "three";
 
 import Stats from 'three/examples/jsm/libs/stats.module';
-
+//import {GLTF2Loader} from 'three-gltf2-loader'
 import {GLTFLoader} from 'three/examples/jsm/loaders/GLTFLoader';
 import {OrbitControls} from 'three/examples/jsm/controls/OrbitControls'
 var dat =require('three/examples/jsm/libs/dat.gui.module');
+//var GLTFLoader = require('./js/GLTFLoader')
+
 
  
 
@@ -483,7 +485,11 @@ function onDocumentMouseDown( event ) {
 	}
 	addSphere();
 	animate();
-			
+    return (
+        <>{addSphere(),animate()}
+        </>
+    )
+    
 }
 
 export default SolarS
