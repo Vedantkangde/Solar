@@ -2,7 +2,7 @@
 import * as THREE from "three";
 
 import Stats from 'three/examples/jsm/libs/stats.module';
-//import {GLTF2Loader} from 'three-gltf2-loader'
+import GLTF2Loader from 'three-gltf2-loader'
 import {GLTFLoader} from 'three/examples/jsm/loaders/GLTFLoader';
 import {OrbitControls} from 'three/examples/jsm/controls/OrbitControls'
 var dat =require('three/examples/jsm/libs/dat.gui.module');
@@ -200,7 +200,7 @@ const SolarS = () => {
 	pathobj.push(mesh);
 	
  	// glTf 2.0 Loader
-	var loader = new GLTFLoader();
+	var loader =  GLTF2Loader(THREE);
 	// Planets variables;
 	var sun,mercury,venus,earth,moon,mars,jupiter,saturn,uranus,neptune;	
 
@@ -208,15 +208,15 @@ const SolarS = () => {
 
 
 	loader.load( './model/sun/sun.gltf', function ( gltf ) {           //   <<--------- Model Path
-	sun = gltf.scene;			
-	gltf.scene.scale.set( 18, 18, 18 );			   
-	gltf.scene.position.x = 0;				    //Position (x = right+ left-) 
-    gltf.scene.position.y = -2;				    //Position (y = up+, down-)
-	gltf.scene.position.z = -3;				    //Position (z = front +, back-)
-	//gltf.animations;
-	scene.add( gltf.scene );
-	planobj.push(sun);
-	});
+		sun = gltf.scene;			
+		gltf.scene.scale.set( 18, 18, 18 );			   
+		gltf.scene.position.x = 0;				    //Position (x = right+ left-) 
+		gltf.scene.position.y = -2;				    //Position (y = up+, down-)
+		gltf.scene.position.z = -3;				    //Position (z = front +, back-)
+		//gltf.animations;
+		scene.add( gltf.scene );
+		planobj.push(sun);
+		});
 
 	loader.load( 'model/mercury/mercury.gltf', function ( gltf ) {           //   <<--------- Model Path
 	mercury = gltf.scene;			
@@ -224,6 +224,7 @@ const SolarS = () => {
 	var pt = mercpath.getPoint( mt );
 	gltf.scene.position.set(pt.x,pt.y,pt.z);
 	scene.add( gltf.scene);
+	console.log("lets c if this works")
 	planobj.push(mercury);
 	});
 
